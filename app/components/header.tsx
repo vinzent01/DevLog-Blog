@@ -1,15 +1,36 @@
 "use client";
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import {Code, Sun, Moon } from "lucide-react";
-import { useState } from "react";
 
-export default function Header(){
-    const [dark, setDark] = useState(false);
+// Lê tema do localStorage apenas se estiver no client
+function getInitialDark() {
+  if (typeof window !== "undefined") {
+    const saved = localStorage.getItem("theme");
+    return saved === "light" ? false : true; // dark por padrão
+  }
+  return true; // fallback no SSR
+}
+
+export default function Header() {
+    const [dark, setDark] = useState(getInitialDark);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setMounted(true); 
+        document.documentElement.classList.toggle("dark", dark);
+    }, [dark]);
 
     function toggleTheme() {
-        const isDark = document.documentElement.classList.toggle("dark");
-        setDark(isDark);
+        const newDark = !dark;
+        setDark(newDark);
+        document.documentElement.classList.toggle("dark", newDark);
+        localStorage.setItem("theme", newDark ? "dark" : "light");
     }
+
+    if (!mounted)
+        return undefined;
 
     return (
         <div className="flex p-6 items-center justify-between">
