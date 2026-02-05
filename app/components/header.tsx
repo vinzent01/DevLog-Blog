@@ -11,8 +11,6 @@ export default function Header(){
         setDark(isDark);
     }
 
-    const isDark = document.documentElement.classList.contains("dark");
-
     return (
         <div className="flex p-6 items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -26,7 +24,7 @@ export default function Header(){
                 <button className="cursor-pointer"
                     onClick={toggleTheme}
                 >
-                    {isDark ? (
+                    {dark ? (
                         <Sun>
                         </Sun>
                     ) : 
