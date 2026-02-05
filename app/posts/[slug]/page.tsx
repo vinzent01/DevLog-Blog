@@ -5,11 +5,10 @@ export default async function PostPage({params} : {params : Promise<{slug : stri
 
   // If your file is app/blog/[slug]/page.js
   const { slug } = await params; // 'slug' matches the folder name in brackets
-
-  let post = await getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
 
   return (
-    <main className="flex min-h-screen items-center justify-center p-4 ">
+    <main className="bg-white text-black dark:bg-black dark:text-white flex min-h-screen items-center justify-center p-4 ">
       <div className="max-w-4xl">
         <Markdown>
           {post.content}

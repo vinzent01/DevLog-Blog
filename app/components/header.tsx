@@ -1,8 +1,18 @@
+"use client";
 import Link from "next/link";
-
-import { Home, Code } from "lucide-react";
+import {Code, Sun, Moon } from "lucide-react";
+import { useState } from "react";
 
 export default function Header(){
+    const [dark, setDark] = useState(false);
+
+    function toggleTheme() {
+        const isDark = document.documentElement.classList.toggle("dark");
+        setDark(isDark);
+    }
+
+    const isDark = document.documentElement.classList.contains("dark");
+
     return (
         <div className="flex p-6 items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -11,10 +21,25 @@ export default function Header(){
                     <h1 className="text-xl">DevLog Website</h1>
                 </Link>
             </div>
-            <nav className="flex">
+            <nav className="flex space-x-4">
+
+                <button className="cursor-pointer"
+                    onClick={toggleTheme}
+                >
+                    {isDark ? (
+                        <Sun>
+                        </Sun>
+                    ) : 
+                        <Moon>
+
+                        </Moon>
+                    }
+                </button>
+
                 <ul className="flex gap-6">
                     <li><Link href="/" >home</Link></li>
                 </ul>
+
             </nav>
         </div>
     )
