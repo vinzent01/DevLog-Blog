@@ -1,0 +1,23 @@
+import { getAllPosts, removeFirstMarkdownTitle } from "../lib/posts"
+import Link from "next/link";
+
+export default async function ContentList(){
+    var allPosts = await getAllPosts();
+    return (
+        <div className="space-y-10">
+            <h2 className="text-2xl">Ultimos posts</h2>
+            {allPosts.map( (p) => {
+                return (
+                <div key={p.slug} className="flex-col space-y-4 p-6 rounded-sm bg-zinc-900 p-6 rounded-sm">
+                    <Link href={"/posts/"+p.slug}>
+                        <h3 className="text-xl font-bold">{p.title}</h3>
+                        <p>{removeFirstMarkdownTitle(p.excerpt)}</p>
+                    </Link>
+                </div>
+                )
+            })}
+
+        </div>
+    )
+
+}
