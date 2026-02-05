@@ -1,5 +1,6 @@
 ---
 title: "Como organizar seus estudos em programação sem se perder"
+img : /images/post3.jpg
 ---
 
 # Como organizar seus estudos em programação sem se perder

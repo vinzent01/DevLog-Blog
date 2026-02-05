@@ -1,5 +1,6 @@
 ---
 title: Erros comuns de quem está aprendendo a programar (e como evitar)
+img : /images/post1.jpg
 ---
 
 # Erros comuns de quem está aprendendo a programar (e como evitar)

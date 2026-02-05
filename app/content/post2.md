@@ -1,5 +1,6 @@
 ---
 title: "Por que aprender lógica antes de escolher uma linguagem de programação"
+img : /images/post2.jpg
 ---
 
 # Por que aprender lógica antes de escolher uma linguagem de programação

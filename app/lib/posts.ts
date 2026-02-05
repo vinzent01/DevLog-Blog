@@ -9,6 +9,7 @@ export type PostFrontmatter = {
   description: string;
   date: string;
   tags?: string[];
+  img: string
 };
 
 export async function getPostBySlug(slug: string) {
